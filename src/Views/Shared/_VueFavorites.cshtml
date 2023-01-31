@@ -1,0 +1,53 @@
+﻿<script type="module">
+    const { createApp } = Vue
+
+    import * as iuf from '/js/iuf.js'
+
+    createApp({
+        data() {
+            return {
+                favorites: []
+            }
+        },
+        mounted() {
+            try {
+                // This should be safe but try catch it so we don't short circuit the rest
+                // of the page if something would go wrong.
+                if (iuf.ObjectExists("FavoriteList")) {
+                    this.favorites = iuf.GetObject("FavoriteList");
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        },
+        methods: {
+            addFavorite() {
+                if (iuf.ObjectExists("FavoriteList")) {
+                    this.favorites = iuf.GetObject("FavoriteList");
+                }
+
+                let title = document.title.replace(" - FEM", "").trim();
+
+                if (iuf.IsNullOrEmpty(title) || this.favoriteExists(title)) {
+                    return;
+                }
+
+                this.favorites.push({ "title": title, "path": window.location.pathname });
+                iuf.SetObject("FavoriteList", this.favorites);
+            },
+            deleteFavorite(favorite) {
+                this.favorites = this.favorites.filter(function (obj) {
+                    return favorite !== obj;
+                })
+
+                iuf.SetObject("FavoriteList", this.favorites);
+            },
+            favoriteExists(title) {
+                return this.favorites.some(function (obj) {
+                    return obj.title === title;
+                });
+            }
+        }
+    }).mount('#favorites')
+</script>

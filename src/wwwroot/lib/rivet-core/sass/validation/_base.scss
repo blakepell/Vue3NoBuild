@@ -1,0 +1,157 @@
+// rivet-core - @version 2.2.0
+
+// Copyright (C) 2018 The Trustees of Indiana University
+// SPDX-License-Identifier: BSD-3-Clause
+
+@use '../core' as *;
+@use 'sass:math';
+
+@include all-inputs('.#{$prefix}-validation-info') {
+  border-color: $color-blue-500;
+  box-shadow: 0 0 0 .0625rem $color-blue-500;
+  background-color: $color-blue-000;
+
+  &:focus {
+    border-color: $color-blue-400;
+
+    /* stylelint-disable */
+    box-shadow:
+      0 0 0 .125rem $color-white-base,
+      0 0 0 .25rem $color-blue-400;
+    /* stylelint-enable */
+  }
+}
+
+@include all-inputs('.#{$prefix}-validation-warning') {
+  border-color: $color-gold-500;
+  box-shadow: 0 0 0 .0625rem $color-gold-500;
+  background-color: $color-gold-000;
+
+  &:focus {
+    border-color: $color-gold-400;
+    /* stylelint-disable */
+    box-shadow:
+      0 0 0 .125rem $color-white-base,
+      0 0 0 .25rem $color-gold-400;
+    /* stylelint-enable */
+  }
+}
+
+@include all-inputs('.#{$prefix}-validation-danger') {
+  border-color: $color-orange-500;
+  box-shadow: 0 0 0 .0625rem $color-orange-500;
+  background-color: $color-orange-000;
+
+  &:focus {
+    border-color: $color-orange-400;
+    /* stylelint-disable */
+    box-shadow:
+      0 0 0 .125rem $color-white-base,
+      0 0 0 .25rem $color-orange-500;
+    /* stylelint-enable */
+  }
+}
+
+@include all-inputs('.#{$prefix}-validation-success') {
+  border-color: $color-green-500;
+  box-shadow: 0 0 0 .0625rem $color-green-500;
+  background-color: $color-green-000;
+
+  &:focus {
+    border-color: $color-green-400;
+    /* stylelint-disable */
+    box-shadow:
+      0 0 0 .125rem $color-white-base,
+      0 0 0 .25rem $color-green-500;
+    /* stylelint-enable */
+  }
+}
+
+/**
+ * Inline alerts:
+ * These inline alerts are handy for displaying validation messages
+ * alongside groups of form inputs like radio buttons and checkboxes
+ */
+
+.#{$prefix}-inline-alert {
+  margin-top: $spacing-xs;
+  font-size: $ts-14;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    width: $spacing-sm;
+    height: $spacing-sm;
+  }
+
+  &__message {
+    margin-left: $spacing-xs;
+    line-height: 1;
+  }
+
+  &--success {
+    color: $color-green-500;
+  }
+
+  &--warning {
+    color: $color-gold-500;
+  }
+
+  &--warning &__message {
+    color: $color-black-500;
+  }
+
+  &--danger {
+    color: $color-orange-500;
+  }
+
+  &--info {
+    color: $color-blue-600;
+  }
+
+  /**
+   * This standalone modifier should be used with groups of form inputs
+   * like radios and checkboxes.
+   */
+
+  &--standalone {
+    padding: $spacing-xs;
+
+    &.#{$prefix}-inline-alert--is-invalid,
+    &.#{$prefix}-inline-alert--danger {
+      border-left: $spacing-xxs solid $color-orange-500;
+      background-color: $color-orange-000;
+
+      .#{$prefix}-inline-alert__message {
+        color: $color-orange-700;
+      }
+    }
+
+    &.#{$prefix}-inline-alert--success {
+      border-left: $spacing-xxs solid $color-green-500;
+      background-color: $color-green-000;
+
+      .#{$prefix}-inline-alert__message {
+        color: $color-green-700;
+      }
+    }
+
+    &.#{$prefix}-inline-alert--warning {
+      border-left: $spacing-xxs solid $color-gold-500;
+      background-color: $color-gold-000;
+
+      .#{$prefix}-inline-alert__message {
+        color: $color-gold-700;
+      }
+    }
+
+    &.#{$prefix}-inline-alert--info {
+      border-left: $spacing-xxs solid $color-blue-500;
+      background-color: $color-blue-000;
+
+      .#{$prefix}-inline-alert__message {
+        color: $color-blue-600;
+      }
+    }
+  }
+}

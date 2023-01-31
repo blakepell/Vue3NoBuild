@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Vue3NoBuild.Common
+@model Vue3NoBuild.Models.BaseViewModel
+@inject AppSettings AppSettings
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/rivet-core/css/rivet.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <script type="importmap">
+        {
+          "imports": {
+            "vue": "/lib/vue/vue.runtime.esm-browser.js",
+            "/js/iuf.js": "/js/iuf.js?v=@AppSettings.JsVersion",
+            "/js/components/rivet-ajax-select.js": "/js/components/rivet-ajax-select.js?v=@AppSettings.JsVersion",
+            "/js/components/rivet-alert-card.js": "/js/components/rivet-alert-card.js?v=@AppSettings.JsVersion",
+            "/js/components/rivet-badge.js": "/js/components/rivet-badge.js?v=@AppSettings.JsVersion",
+            "/js/components/rivet-dialog.js": "/js/components/rivet-dialog.js?v=@AppSettings.JsVersion",
+            "/js/components/rivet-input-text.js": "/js/components/rivet-input-text.js?v=@AppSettings.JsVersion",
+            "/js/components/rivet-input-search.js": "/js/components/rivet-input-search.js?v=@AppSettings.JsVersion"
+          }
+        }
+    </script>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@1/dist/rivet-icons.css">
+    <script defer src="https://unpkg.com/rivet-icons@1/dist/rivet-icons.js"></script>
+    <script type="module" src="https://unpkg.com/rivet-icons@1/dist/rivet-icon-element.js"></script>
+</head>
+<body>
+    <partial name="/Views/Shared/_Header.cshtml" />
+
+    <main id="main-content" class="rvt-layout__wrapper rvt-layout__wrapper--details">
+        <partial name="/Views/Shared/_Sidebar.cshtml" />
+
+        <div class="rvt-layout__content [ rvt-p-top-lg rvt-p-lr-md rvt-p-lr-xxl-md-up ]">
+            <div class="rvt-prose rvt-grow-1">
+                @if (Model.ShowPageTitle)
+                {
+                    <h1 class="rvt-m-top-xs">@ViewData["Title"]</h1>
+                    <hr />
+                }
+
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <partial name="/Views/Shared/_Footer.cshtml" />
+
+    <script src="~/js/iuf.js" type="module" asp-append-version="true"></script>
+    <script src="~/lib/rivet-core/js/rivet.min.js" asp-append-version="true"></script>
+
+    <script>Rivet.init();</script>
+
+    <script src="~/lib/vue/vue.global.min.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+    @Html.RenderPartialViewScripts()
+
+    <partial name="_VueFavorites" />
+    <partial name="_VueGlobalSearch" />
+</body>
+</html>

@@ -1,0 +1,32 @@
+// rivet-core - @version 2.2.0
+
+@use '../core' as *;
+
+.#{$prefix} {
+  &-abbr,
+  &-abbr[title] {
+    border: none;
+    text-decoration: none;
+  }
+
+  &-code {
+    color: $color-crimson-400;
+    font-size: $ts-16;
+    font-family: monospace;
+    background-color: $color-black-000;
+    display: inline-block;
+    padding: .125rem .25rem;
+    border-radius: $spacing-xxs;
+  }
+
+  &-hr {
+    border-top: 1px solid $color-black-100;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+  }
+
+  &-strong {
+    font-weight: $font-weight-bold;
+  }
+}

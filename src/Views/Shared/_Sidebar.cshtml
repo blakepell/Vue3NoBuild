@@ -1,0 +1,31 @@
+﻿<div class="rvt-layout__sidebar [ rvt-p-top-lg-md-up rvt-p-left-md rvt-bg-black-000 ]" id="section-nav">
+    <nav class="rvt-sidenav" aria-labelledby="details-pages" data-rvt-sidenav>
+        <span class="rvt-sidenav__label" id="details-pages">Catalog</span>
+        <ul class="rvt-sidenav__list">
+            <!-- Index -->
+            <li class="rvt-sidenav__item">
+                <a asp-controller="Home" asp-action="Index" class="rvt-sidenav__link">Index</a>
+            </li>
+
+            <li class="rvt-sidenav__item">
+                <a asp-controller="Cache" asp-action="CacheManager" class="rvt-sidenav__link">Cache Manager</a>
+            </li>
+        </ul>
+
+        <span class="rvt-sidenav__label" id="details-pages">Favorites</span>
+        <ul class="rvt-sidenav__list" id="favorites" v-cloak>
+            <li class="rvt-sidenav__item">
+                <a href="#" class="rvt-sidenav__link" @@click="addFavorite">Add Page as Favorite</a>
+            </li>
+            <li class="rvt-sidenav__item" v-for="favorite in this.favorites">
+                <a :href="favorite.path" class="rvt-sidenav__link">{{favorite.title}}</a>
+                <button class="rvt-button rvt-button--plain"
+                        style="margin-right: 3px;"
+                        @@click="deleteFavorite(favorite)">
+                    <rvt-icon name="trash"></rvt-icon>
+                    <span class="rvt-sr-only">trash</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>

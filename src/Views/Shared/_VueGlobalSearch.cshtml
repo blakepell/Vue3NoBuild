@@ -1,0 +1,13 @@
+﻿<script type="module">
+    const { createApp } = Vue
+
+    import search from '/js/components/rivet-search.js'
+
+    createApp({
+        data() {
+            return {
+            }
+        }
+    }).component('search', search)
+    .mount('#globalsearch')
+</script>

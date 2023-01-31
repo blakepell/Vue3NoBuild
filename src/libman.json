@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "vue@3.2.41",
+      "destination": "wwwroot/lib/vue/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "rivet-core@2.2.0",
+      "destination": "wwwroot/lib/rivet-core/"
+    }
+  ]
+}

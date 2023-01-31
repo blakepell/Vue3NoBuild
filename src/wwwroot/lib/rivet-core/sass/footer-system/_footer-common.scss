@@ -1,0 +1,13 @@
+// rivet-core - @version 2.2.0
+
+// Applies to all parts of the footer
+
+@use '../core' as *;
+
+.#{$prefix}-footer-social,
+.#{$prefix}-footer-resources,
+.#{$prefix}-footer-base {
+  a:focus {
+    outline-color: $color-white-base;
+  }
+}

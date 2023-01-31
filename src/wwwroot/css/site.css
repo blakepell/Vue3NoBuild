@@ -1,0 +1,156 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Vue Cloaking to avoid flicker */
+[v-cloak] {
+    display: none !important;
+}
+
+/*
+ * Ability to overlay a child element that adhere's to the width of
+ * the parent element.
+ */
+.parent-overlay {
+    position: relative;
+}
+
+.child-overlay {
+    position: absolute !important;
+    width: 100% !important;
+    top: 54px;
+    left: 0px;
+    z-index: 1000;
+}
+
+/*
+ * Fixed width font, dark on light colors.
+ */
+.iuf-code {
+    padding: 20px;
+    background: #1E1E1E;
+    font-family: Consolas, Courier New;
+    color: #DCDCDC;
+}
+
+/*
+ * Rivet data table CSS
+ */
+.rvt-table-hover tr:hover td {
+    background-color: cornflowerblue !important;
+    color: White !important;
+}
+
+.rvt-table-hover tr:hover p {
+    background-color: cornflowerblue !important;
+    color: White !important;
+}
+
+.rvt-table-hover tr:hover li {
+    background-color: cornflowerblue !important;
+    color: White !important;
+}
+
+/*
+ * Rivet Radius
+ */
+.rvt-c-radius-sm {
+    border-radius: 5px;
+}
+
+/*
+ * Medium button
+ */
+.rvt-button--md {
+    position: relative !important;
+    height: 2.0rem !important;
+    padding: 0.5rem !important;
+}
+
+    .rvt-button--md
+    .rvt-dropdown__toggle-text {
+        margin-right: 0rem;
+    }
+
+/*
+ * Rivet IUF CSS Styles for a list based typeahead control.
+ */
+.rvt-iuf-ul-select {
+    display: block;
+    width: 100%;
+    border-radius: .25rem;
+    background-color: #fff;
+    border: 1px solid #75838f;
+    padding: 0;
+    height: auto;
+    max-height: 10.0rem;
+    line-height: 1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    list-style-type: none;
+    overflow-y: scroll;
+}
+
+    .rvt-iuf-ul-select li {
+        padding: .5rem;
+    }
+
+        .rvt-iuf-ul-select li:hover {
+            background-color: #EDFAFD;
+            color: #006298;
+            cursor: pointer;
+        }
+
+.rvt-iuf-ul-selected {
+    background-color: #EDFAFD;
+    color: #006298;
+}
+
+/*
+ * Transitions
+ */
+
+/* slide-fade */
+.slide-fade-enter-active {
+    transition: all 0.5s ease-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+}
+
+/* fade */
+.fade-enter-from {
+    opacity: 0
+}
+
+.fade-enter-to {
+    opacity: 1
+}
+
+.fade-enter-active {
+    transition: opacity 1s ease
+}

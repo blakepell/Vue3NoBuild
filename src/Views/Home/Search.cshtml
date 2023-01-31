@@ -1,0 +1,12 @@
+﻿@model Vue3NoBuild.Models.GenericViewModel<string>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Vue3 & .NET Core 7";
+    ViewData["SubTitle"] = "No JavaScript Build Step";
+    ViewData["PageSections"] = new[] { "Overview" };
+}
+
+<h2 id="overview">Search Results <a class="rvt-anchor" href="#overview"></a></h2>
+<hr />
+
+<p>You searched for <em>@Model.Data</em></p>

@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "_LayoutContent";
+    ViewData["Title"] = "Vue3 & .NET Core 7";
+    ViewData["SubTitle"] = "No JavaScript Build Step";
+    ViewData["PageSections"] = new[] { "Overview", "Badge", "Input", "Alert", "AjaxSelect" };
+}
+
+<div id="app">
+    <!-- Overview -->
+    <h2 id="overview">Overview <a class="rvt-anchor" href="#overview"></a></h2>
+    <hr/>
+
+    <p>This site will provide a few basic examples of using Vue3 without a build step.</p>
+
+    <!-- Badge -->
+    <h2 id="badge" style="margin-top: 70px;">Badge <a class="rvt-anchor" href="#Badge"></a></h2>
+    <hr/>
+
+    <rivet-badge value=".NET 7" variant="success"></rivet-badge>
+    <rivet-badge value="Vue3" variant="success" style="margin-left: 5px;"></rivet-badge>
+    <rivet-badge value="No Build?" variant="danger" style="margin-left: 5px;"></rivet-badge>
+
+    <!-- Text Input -->
+    <h2 id="input" style="margin-top: 70px;">Text Input <a class="rvt-anchor" href="#input"></a></h2>
+    <hr/>
+    
+    <rivet-input-text v-model="textInput" 
+                      placeholder="Enter text here to see binding"
+                      :max-length="32"
+                      label="Sample Text Input"></rivet-input-text>
+    
+    <div style="margin-top: 10px;">
+        Binding: {{textInput}}
+    </div>
+
+    <!-- Alert Card -->
+    <h2 id="alert" style="margin-top: 70px;">Alert Card <a class="rvt-anchor" href="#alert"></a></h2>
+    <hr/>
+  
+    <rivet-alert-card title="Danger" :text="coalesce(textInput, 'Enter some text in the input above.')"></rivet-alert-card>
+
+    <!-- Alert Card -->
+    <h2 id="ajaxselect" style="margin-top: 70px;">Ajax Select <a class="rvt-anchor" href="#ajaxselect"></a></h2>
+    <hr/>
+    
+    <rivet-ajax-select v-model="selectedItem" url="@Url.Action("NumberLookup", "Home")"></rivet-ajax-select>
+    
+    <div style="margin-top: 10px;">
+        Binding: {{selectedItem}}
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script type="module">
+        const { createApp } = Vue
+
+        import RivetInputText from '/js/components/rivet-input-text.js'
+        import RivetAjaxSelect from '/js/components/rivet-ajax-select.js'
+        import RivetAlertCard from '/js/components/rivet-alert-card.js'
+        import RivetBadge from '/js/components/rivet-badge.js'
+        import * as iuf from '/js/iuf.js'
+
+        createApp({
+            data() {
+                return {
+                    textInput: "",
+                    selectedItem: 1
+                }
+            },
+            async mounted() {
+
+            },
+            methods: {
+                coalesce(val1, val2) {
+                    if (!iuf.IsNullOrEmpty(val1)) {
+                        return val1;
+                    }
+                    
+                    return val2;
+                }
+            },
+            computed: {
+            }
+        }).component('RivetInputText', RivetInputText)
+            .component('RivetAlertCard', RivetAlertCard)
+            .component('RivetAjaxSelect', RivetAjaxSelect)
+            .component('RivetBadge', RivetBadge)
+            .mount('#app')
+
+    </script>
+}

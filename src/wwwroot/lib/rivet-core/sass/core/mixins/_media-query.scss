@@ -1,0 +1,9 @@
+// rivet-core - @version 2.2.0
+
+// Media query helper function
+
+@mixin mq($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
